@@ -1,8 +1,26 @@
 <html>
     <head>
         <title> Youtube downloader </title>
+        <script type="module" href="/scripts/index.js"></script>
+        <script type="module">
+            import {indexCtrl} from "/scripts/index.js"
+            document.addEventListener("DOMContentLoaded", async ()=>{
+                indexCtrl.urlInputListener(document.querySelector("#videoUrl"))
+                indexCtrl.downloadMp3Listener(document.querySelector("#mp3"))
+                indexCtrl.downloadVideoListener(document.querySelector("#video"))
+            });
+        </script>
     </head>
     <body>
-        Placeholder text
+        <div>
+            Enter video url here:
+            <input type="text" id="videoUrl"/>
+        </div>
+        <br>
+        <div>
+            <button id="mp3">Get mp3</button>
+            <button id="video">Get video</button>
+        </div>
+        
     </body>
 </html>

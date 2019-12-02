@@ -1,13 +1,14 @@
 const express = require('express')
 const application = express()
 const path = require("path")
-const directory = path.join(__dirname, 'public')
+const directory = path.join(__dirname, '/public')
 
 const apiUrl = {
     apiUrl: null
 }
-
-application.use(express.static(directory))
+console.log(`${directory}/view/script/index.js`)
+application.use('/scripts', express.static(`${directory}/script`))
+application.use('/styles', express.static(`${directory}/style`))
 
 application.get('/', (request, response)=>{
     response.sendFile(`${directory}/view/index.html`)
