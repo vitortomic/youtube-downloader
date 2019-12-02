@@ -1,0 +1,24 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "youtube video/mp3 downloader",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitortomic/youtube-downloader.git"
+  },
+  "author": "vitortomic@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitortomic/youtube-downloader/issues"
+  },
+  "homepage": "https://github.com/vitortomic/youtube-downloader#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "open": "^7.0.0",
+    "ytdl-core": "^1.0.3"
+  }
+}
