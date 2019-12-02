@@ -22,4 +22,3 @@ clientServer.listen(0, ()=>{
 const openUrl = async (url)=>{
     await open(url)
 }
-

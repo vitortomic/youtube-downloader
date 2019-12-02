@@ -3,11 +3,11 @@
         <title> Youtube downloader </title>
         <script type="module" href="/scripts/index.js"></script>
         <script type="module">
-            import {indexCtrl} from "/scripts/index.js"
+            import {indexController} from "/scripts/index.js"
             document.addEventListener("DOMContentLoaded", async ()=>{
-                indexCtrl.urlInputListener(document.querySelector("#videoUrl"))
-                indexCtrl.downloadMp3Listener(document.querySelector("#mp3"))
-                indexCtrl.downloadVideoListener(document.querySelector("#video"))
+                indexController.urlInputListener(document.querySelector("#videoUrl"))
+                indexController.downloadMp3Listener(document.querySelector("#mp3"))
+                indexController.downloadVideoListener(document.querySelector("#video"))
             });
         </script>
     </head>

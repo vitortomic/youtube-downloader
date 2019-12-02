@@ -1,4 +1,5 @@
-class IndexController{
+import {videoConverterApi} from '/scripts/videoConverterApi.js'
+class IndexController {
     constructor(){};
     videoUrl
     urlInputListener(element) {
@@ -8,14 +9,14 @@ class IndexController{
     }
     downloadMp3Listener(element) {
         element.addEventListener('click', ()=>{
-            alert('mp3')
+            videoConverterApi.processMp3(videoUrl)
         })
     }
     downloadVideoListener(element) {
         element.addEventListener('click', ()=>{
-            alert('video')
+            videoConverterApi.processVideo(videoUrl)
         })
     }
 }
 
-export let indexCtrl = new IndexController()
+export let indexController = new IndexController()
