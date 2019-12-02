@@ -6,7 +6,7 @@ const directory = path.join(__dirname, '/public')
 const apiUrl = {
     apiUrl: null
 }
-console.log(`${directory}/view/script/index.js`)
+
 application.use('/scripts', express.static(`${directory}/script`))
 application.use('/styles', express.static(`${directory}/style`))
 

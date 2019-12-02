@@ -8,13 +8,13 @@ class IndexController {
         })
     }
     downloadMp3Listener(element) {
-        element.addEventListener('click', ()=>{
-            videoConverterApi.processMp3(videoUrl)
+        element.addEventListener('click', async ()=>{
+            await videoConverterApi.processMp3(this.videoUrl)
         })
     }
     downloadVideoListener(element) {
-        element.addEventListener('click', ()=>{
-            videoConverterApi.processVideo(videoUrl)
+        element.addEventListener('click', async ()=>{
+            await videoConverterApi.processVideo(this.videoUrl)
         })
     }
 }
