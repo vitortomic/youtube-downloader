@@ -2,10 +2,21 @@ class VideoConverterApi {
     constructor(){};
     apiUrl
     async processMp3(videoUrl) {
-        return await (await fetch(`${this.apiUrl}/mp3`, getRequestBody(videoUrl))).json()
+        return await (await fetch(`${this.apiUrl}/mp3`, getRequestBody(videoUrl)))
     }
-    async processVideo(videoUrl) {
-        return await (await fetch(`${this.apiUrl}/video`, getRequestBody(videoUrl))).json()
+    
+    processVideo(videoUrl) {
+        fetch(`${this.apiUrl}/video`, getRequestBody(videoUrl))
+        .then(response=>response.blob())
+        .then(blob=>{
+            let url = window.URL.createObjectURL(blob)
+            let a = document.createElement('a')
+            a.href = url
+            a.download = "video.mp4"
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+        })
     }
 }
 const getRequestBody = (videoUrl)=>{
