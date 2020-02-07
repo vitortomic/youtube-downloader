@@ -25,14 +25,4 @@ application.post('/video', (request, response)=>{
     })
 })
 
-application.get('/video', (request, response)=>{
-    ytdl('https://youtu.be/tUnUqQh3ynE', { filter: format => format.container === 'mp4' })
-    .pipe(fs.createWriteStream('video.mp4'))
-    .on('finish', ()=>{
-        fs.createReadStream('video.mp4').pipe(response)
-    })
-})
-
 module.exports = application
-
-//https://youtu.be/tUnUqQh3ynE
