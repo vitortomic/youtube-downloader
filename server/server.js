@@ -15,6 +15,10 @@ application.post('/mp3', (request, response)=>{
 
 application.post('/video', (request, response)=>{
     ytdl(request.body.videoUrl, { filter: format => format.container === 'mp4' })
+    .on('error', (error)=>{
+        console.log(error)
+        response.send(error)
+    })
     .pipe(fs.createWriteStream(filepath))
     .on('finish', ()=>{
         fs.createReadStream(filepath)
