@@ -6,21 +6,33 @@
             import {indexController} from "/scripts/index.js"
             document.addEventListener("DOMContentLoaded", async ()=>{
                 indexController.urlInputListener(document.querySelector("#videoUrl"))
-                indexController.downloadMp3Listener(document.querySelector("#mp3"))
+                //indexController.downloadMp3Listener(document.querySelector("#mp3"))
                 indexController.downloadVideoListener(document.querySelector("#video"))
+            });
+            document.addEventListener('loading', ()=>{
+                document.querySelector('.loaded').style.visibility = "hidden"
+                document.querySelector('.loading').style.visibility = "visible"
+            });
+            document.addEventListener('loaded', ()=>{
+                document.querySelector('.loaded').style.visibility = "visible"
+                document.querySelector('.loading').style.visibility = "hidden"
             });
         </script>
     </head>
     <body>
-        <div>
-            Enter video url here:
-            <input type="text" id="videoUrl"/>
+        <div class="loaded">
+            <div>
+                Enter video url here:
+                <input type="text" id="videoUrl"/>
+            </div>
+            <br>
+            <div>
+                <!--<button id="mp3">Get mp3</button>-->
+                <button id="video">Get video</button>
+            </div>
         </div>
-        <br>
-        <div>
-            <button id="mp3">Get mp3</button>
-            <button id="video">Get video</button>
+        <div class="loading" style="visibility: hidden">
+                Loading...
         </div>
-        
     </body>
 </html>
