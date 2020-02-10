@@ -7,14 +7,26 @@ class IndexController {
             this.videoUrl = event.target.value
         })
     }
-    downloadMp3Listener(element) {
-        element.addEventListener('click', async ()=>{
+    downloadMp3Listener(button) {
+        button.addEventListener('click', async ()=>{
+            if (!this.videoUrl) {
+                alert('Mp3 url is blank!')
+                return;
+            }
+            document.dispatchEvent(new Event('loading'))
             await videoConverterApi.processMp3(this.videoUrl)
+            document.dispatchEvent(new Event('loaded'))
         })
     }
-    downloadVideoListener(element) {
-        element.addEventListener('click', async ()=>{
+    downloadVideoListener(button) {
+        button.addEventListener('click', async ()=>{
+            if (!this.videoUrl) {
+                alert('Video url is blank!')
+                return;
+            }
+            document.dispatchEvent(new Event('loading'))
             await videoConverterApi.processVideo(this.videoUrl)
+            document.dispatchEvent(new Event('loaded'))
         })
     }
 }
