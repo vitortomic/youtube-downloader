@@ -5,10 +5,13 @@ class VideoConverterApi {
         return await (await fetch(`${this.apiUrl}/mp3`, getRequestBody(videoUrl)))
     }
     
-    processVideo(videoUrl) {
-        fetch(`${this.apiUrl}/video`, getRequestBody(videoUrl))
-        .then(response=>response.blob())
-        .then(blob=>{
+    async processVideo(videoUrl) {
+        try {
+            const response = await fetch(`${this.apiUrl}/video`, getRequestBody(videoUrl))
+            if (response.status != 200) {
+                throw new Error(`${response.text}`)
+            }
+            const blob = await response.blob()
             let url = window.URL.createObjectURL(blob)
             let a = document.createElement('a')
             a.href = url
@@ -16,7 +19,11 @@ class VideoConverterApi {
             document.body.appendChild(a)
             a.click()
             a.remove()
-        })
+        } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+        }
+        
     }
 }
 const getRequestBody = (videoUrl)=>{
